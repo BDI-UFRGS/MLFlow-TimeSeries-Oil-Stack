@@ -1,0 +1,20 @@
+registered_models:
+    RATE_OIL_PROD:
+        1d:
+            "1": "models:/1d_1/Production"
+            "6": "models:/1d_6/Production"
+            "12": "models:/1d_12/Production"
+            "24": "models:/1d_24/Production"
+            "168": "models:/1d_168/Production"
+        1h:
+            "1": "models:/1h_1/Production"
+            "6": "models:/1h_6/Production"
+            "12": "models:/1h_12/Production"
+            "24": "models:/1h_24/Production"
+            "168": "models:/1h_168/Production"
+        10min:
+            "1": "models:/10min_1/Production"
+            "6": "models:/10min_6/Production"
+            "12": "models:/10min_12/Production"
+            "24": "models:/10min_24/Production"
+            "168": "models:/10min_168/Production"

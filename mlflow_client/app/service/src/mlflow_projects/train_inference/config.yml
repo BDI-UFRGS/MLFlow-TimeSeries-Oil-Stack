@@ -1,0 +1,47 @@
+hyperparameters:
+    arima1:
+        start_p: 1
+        max_p: 6
+        start_q: 1
+        max_q: 3
+        seasonal: False
+    dlinear1:
+        n_epochs: 99
+        kernel_size : ["range", 1, 100, 10]
+        batch_size: ["list", 16, 32]
+        learning_rate: ["list", 0.001, 0.01]
+    lr1:
+        #lags: ["range", 2, 128, 7]
+        lags_past_covariates: ["equal", "lags"]
+        lags_future_covariates: ["equal", "lags"]
+    tft1:
+        #input_chunk_length: ["range", 2, 6, 2]
+        n_epochs: 99
+        lstm_layers: ["range", 1, 2, 1]
+        dropout: ["list", 0.1, 0.5, 0.9]
+        num_attention_heads: ["range", 1, 4, 1] 
+        hidden_size: ["range", 1, 32, 4]
+        batch_size: ["list", 16, 32]
+        add_relative_index: "True"
+        learning_rate: ["list", 0.001, 0.01]
+    lstm1:
+        input_chunk_length: ["range", 2, 128, 7]
+        n_epochs: 99
+        hidden_dim: ["range", 1, 16, 4]
+        n_rnn_layers: ["range", 1, 4, 1] 
+        model: 'LSTM'
+        learning_rate: ["list", 0.1, 1]
+    xgb1:
+        #lags: ["range", 2, 16, 7]
+        #lags_past_covariates: ["equal", "lags"]
+        #lags_future_covariates: ["equal", "lags"]
+        learning_rate: ["list", 0.01, .1]
+        max_depth: ["range", 1, 32, 4]
+        min_child_weight: ["range", 1, 10, 2]
+        gamma: ["range", 0, 5, 1]
+        colsample_bytree: ["range", 0.5, 1, 0.1]
+        n_estimators: 300
+        early_stopping_rounds: 5
+        multi_models: True
+    naive_last1:
+        

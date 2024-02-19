@@ -1,0 +1,34 @@
+name: test
+
+entry_points:
+  train:
+    parameters:
+      start_date: {type: str, default: "2018-01-01T00:00:00"}
+      end_date: {type: str, default: "2019-08-31T00:00:00"}
+      darts_model: {type: str, default: "NaiveMovingAverage"}
+      num_splits: {type: int, default: 3}
+      optuna_trials: {type: int, default 50}
+      freq: {type: str, default: "1d"}
+      input_chunk_length: {type: int, default 1}
+      output_chunk_length: {type: int, default 6}
+      hyperparams_entrypoint: {type: str, default: "naive1"}
+      device: {type: str, default: gpu}
+      num_workers: {type: int, default: 4}
+      targets: {type: list, default: ""}
+      future_cov: {type:list, default: ""}
+      past_cov: {type:list, default: ""}
+      interpolate: {type: str, default: "linear"}
+      outlier_removal: {type: str, default: "very_big_number_outlier_removal"}
+      add_func: {type: str, default: "temp_add_aditional_features"}
+      scaler: {type: str, default: "MinMaxScaler"}
+    command: |    
+      python train.py --start_date {start_date} --end_date {end_date} --darts_model {darts_model} --num_splits {num_splits} --optuna_trials {optuna_trials} --freq {freq} --input_chunk_length {input_chunk_length} --output_chunk_length {output_chunk_length} --device {device} --hyperparams_entrypoint {hyperparams_entrypoint} --num_workers {num_workers} --targets {targets} --future_cov {future_cov} --past_cov {past_cov} --interpolate {interpolate} --outlier_removal {outlier_removal} --scaler {scaler}
+  backcast:
+    parameters:
+      pyfunc_model_folder: {type: str, default: NaiveMean}
+      forecast_horizon: {type: int, default: 3}
+      forecast_date: {type: str, default: "2018-08-08"}
+      freq: {type: str, default: "1h"}
+      choke: {type: str, default: "100"}
+    command: |    
+      python backcast.py {pyfunc_model_folder} {forecast_horizon} {forecast_date} {freq} {choke}
